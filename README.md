@@ -23,7 +23,7 @@ Este proyecto utiliza **Node.js v24.13.1** y **npm** como dependencias principal
 ## Ejecución del proyecto  
   
 Para ejecutar el proyecto se utiliza el comando  
-    ```bash   
-    npm start  
+    ```bash  
+    npm start
   
 
