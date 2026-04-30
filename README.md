@@ -10,20 +10,20 @@ Este proyecto utiliza **Node.js v24.13.1** y **npm** como dependencias principal
 ## Instalación  
 1. Clona el repositorio en tu máquina local
    ```bash
-   git clone https://github.com/RafaellMoralesL/ToDoList-Backend.git  ```
+   git clone https://github.com/RafaellMoralesL/ToDoList-Backend.git```  
   
 2. Ingresa al directorio del proyecto  
     ```bash
-    cd backend  ```
+    cd backend```  
   
 3. Instala las dependencias necesarias  
     ```bash  
-    npm install  ```
+    npm install```  
   
 ## Ejecución del proyecto  
   
 Para ejecutar el proyecto se utiliza el comando  
-    ```bash  
+    ```bash   
     npm start ```
   
 
