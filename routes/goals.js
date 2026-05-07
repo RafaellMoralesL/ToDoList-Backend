@@ -8,23 +8,31 @@ let goals = [
 ];
 
 router.get('/getGoals', (req, res) => {
-    res.json(goals);
+    res.status(200).json(goals);
 });
 
 router.post('/addGoal', (req, res) => {
     const { name, description, duedate } = req.body;
+    if (name && description && duedate) { 
     const newGoal = {
         id_: Math.floor(Math.random() * 10000) + 1,
         name,
         description,
         duedate
     };
-    goals.push(newGoal);
-    res.json(newGoal);
+        goals.push(newGoal);
+        res.status(200).json(newGoal);
+    }else {
+    res.status(400).json({ error: 'Please provide the required fields' });
+    }
 });
 
 router.delete('/removeGoal/:id', (req, res) => {
-    const goalId = parseInt(req.params.id);
-    goals = goals.filter(goal => goal.id_ !== goalId);
-    res.json({ message: `Goal with id ${goalId} deleted` });
+    if (req.params && req.params.id && !isNaN(req.params.id)) {
+        const goalId = parseInt(req.params.id); 
+        goals = goals.filter(goal => goal.id_ !== goalId);
+        res.status(200).json({ message: `Goal with id ${goalId} deleted` });
+    } else {
+        res.status(400).json({ error: 'Invalid goal ID' });
+}
 });

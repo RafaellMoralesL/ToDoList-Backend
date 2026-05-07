@@ -7,27 +7,34 @@ let tasks = [
     { id_: 3, name: 'Task 3', description: 'Description of Task 3', duedate: '2024-07-10' }
 ];
 
-
 router.get('/getTasks', (req, res) => {
-    res.json(tasks);
+    res.status(200).json(tasks);
 });
 
 router.post('/addTask', (req, res) => {
     const { name, description, duedate } = req.body;
+        if (name && description && duedate) {
     const newTask = {
         id_: Math.floor(Math.random() * 1000) + 1,
         name,
         description,
         duedate
     };
-    tasks.push(newTask);
-    res.json(newTask);
+        tasks.push(newTask);
+        res.status(200).json(newTask);
+    } else {
+        res.status(400).json({ error: 'Please provide the required fields' });
+    }
 });
 
 router.delete('/deleteTask/:id', (req, res) => {
-    const taskId = parseInt(req.params.id);
-    tasks = tasks.filter(task => task.id_ !== taskId);
-    res.json({ message: `Task with id ${taskId} deleted` });
+    if (req.params && req.params.id && !isNaN(req.params.id)) {
+        const taskId = parseInt(req.params.id);
+        tasks = tasks.filter(task => task.id_ !== taskId);
+        res.status(200).json({ message: `Task with id ${taskId} deleted` });
+    } else {
+        res.status(400).json({ error: 'Invalid task ID' });
+    } 
 });
 
 module.exports = router;
