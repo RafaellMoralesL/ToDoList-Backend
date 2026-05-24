@@ -54,7 +54,7 @@ router.post('/addTask', async function(req, res, next) {
     });
 
 
-router.delete('/deleteTask/:id', async function (req, res, next) {
+router.delete('/removeTask/:id', async function (req, res, next) {
     if (req.params && req.params.id && !isNaN(req.params.id)) {
         let id = req.params.id;
         try {
